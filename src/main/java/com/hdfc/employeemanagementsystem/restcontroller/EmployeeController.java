@@ -19,7 +19,7 @@ public class EmployeeController {
     @Autowired
     IEmployeeService employeeService;
 
-    @GetMapping("/getRatingBy/{employeeId}")
+    @GetMapping("/getEmployeeBy/{employeeId}")
     public ResponseEntity<Employee> getRatingByCustomerId(@PathVariable int employeeId) throws EmployeeNotFoundException {
         Employee employee = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employee);
