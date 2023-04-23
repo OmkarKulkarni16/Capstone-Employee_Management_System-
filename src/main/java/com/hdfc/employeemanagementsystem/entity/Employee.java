@@ -1,5 +1,7 @@
 package com.hdfc.employeemanagementsystem.entity;
 
+import com.hdfc.employeemanagementsystem.config.AesEncryptor;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,18 +12,20 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employeeid")
-    private int EmployeeId;
+    private int employeeId;
 
     @Column(name = "employeename")
-    private String EmployeeName;
+    private String employeeName;
 
     @Column(name = "employeedateofbirth")
-    private String EmployeeDateOfBirth;
+    @Convert(converter = AesEncryptor.class)
+    private String employeeDateOfBirth;
+
 
     public Employee(int employeeId, String employeeName, String employeeDateOfBirth) {
-        EmployeeId = employeeId;
-        EmployeeName = employeeName;
-        EmployeeDateOfBirth = employeeDateOfBirth;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeDateOfBirth = employeeDateOfBirth;
     }
 
     public Employee() {
@@ -29,37 +33,35 @@ public class Employee {
     }
 
     public int getEmployeeId() {
-        return EmployeeId;
+        return employeeId;
     }
 
     public void setEmployeeId(int employeeId) {
-        EmployeeId = employeeId;
+        this.employeeId = employeeId;
     }
 
     public String getEmployeeName() {
-        return EmployeeName;
+        return employeeName;
     }
 
     public void setEmployeeName(String employeeName) {
-        EmployeeName = employeeName;
+        this.employeeName = employeeName;
     }
 
     public String getEmployeeDateOfBirth() {
-        return EmployeeDateOfBirth;
+        return employeeDateOfBirth;
     }
 
     public void setEmployeeDateOfBirth(String employeeDateOfBirth) {
-        EmployeeDateOfBirth = employeeDateOfBirth;
+        this.employeeDateOfBirth = employeeDateOfBirth;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "EmployeeId=" + EmployeeId +
-                ", EmployeeName='" + EmployeeName + '\'' +
-                ", EmployeeDateOfBirth='" + EmployeeDateOfBirth + '\'' +
+                "employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", employeeDateOfBirth='" + employeeDateOfBirth + '\'' +
                 '}';
     }
-
-
 }

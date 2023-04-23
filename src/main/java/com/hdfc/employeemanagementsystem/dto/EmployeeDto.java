@@ -8,8 +8,8 @@ import lombok.*;
 @Setter
 @ToString
 public class EmployeeDto {
-    private int EmployeeId;
-    private String EmployeeName;
-    private String EmployeeDateOfBirth;
+    private int employeeId;
+    private String employeeName;
+    private String employeeDateOfBirth;
 
 }
